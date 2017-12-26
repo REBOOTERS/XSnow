@@ -33,7 +33,6 @@ public class ViseHttp {
     private static Retrofit.Builder retrofitBuilder;
     private static ApiCache.Builder apiCacheBuilder;
     private static OkHttpClient okHttpClient;
-    private static ApiCache apiCache;
 
     private static final HttpGlobalConfig NET_GLOBAL_CONFIG = HttpGlobalConfig.getInstance();
 
@@ -86,14 +85,12 @@ public class ViseHttp {
     }
 
     public static ApiCache getApiCache() {
-        if (apiCache == null || apiCache.isClosed()) {
-            apiCache = getApiCacheBuilder().build();
-        }
-        return apiCache;
+        return getApiCacheBuilder().build();
     }
 
     /**
      * 通用请求，可传入自定义请求
+     *
      * @param request
      * @return
      */
@@ -107,6 +104,7 @@ public class ViseHttp {
 
     /**
      * 可传入自定义Retrofit接口服务的请求类型
+     *
      * @return
      */
     public static <T> RetrofitRequest RETROFIT() {
@@ -115,6 +113,7 @@ public class ViseHttp {
 
     /**
      * GET请求
+     *
      * @param suffixUrl
      * @return
      */
@@ -124,6 +123,7 @@ public class ViseHttp {
 
     /**
      * POST请求
+     *
      * @param suffixUrl
      * @return
      */
@@ -133,6 +133,7 @@ public class ViseHttp {
 
     /**
      * HEAD请求
+     *
      * @param suffixUrl
      * @return
      */
@@ -142,6 +143,7 @@ public class ViseHttp {
 
     /**
      * PUT请求
+     *
      * @param suffixUrl
      * @return
      */
@@ -151,6 +153,7 @@ public class ViseHttp {
 
     /**
      * PATCH请求
+     *
      * @param suffixUrl
      * @return
      */
@@ -160,6 +163,7 @@ public class ViseHttp {
 
     /**
      * OPTIONS请求
+     *
      * @param suffixUrl
      * @return
      */
@@ -169,6 +173,7 @@ public class ViseHttp {
 
     /**
      * DELETE请求
+     *
      * @param suffixUrl
      * @return
      */
@@ -178,6 +183,7 @@ public class ViseHttp {
 
     /**
      * 上传
+     *
      * @param suffixUrl
      * @return
      */
@@ -187,6 +193,7 @@ public class ViseHttp {
 
     /**
      * 上传（包含上传进度回调）
+     *
      * @param suffixUrl
      * @return
      */
@@ -196,6 +203,7 @@ public class ViseHttp {
 
     /**
      * 下载（回调DownProgress）
+     *
      * @param suffixUrl
      * @return
      */
@@ -205,6 +213,7 @@ public class ViseHttp {
 
     /**
      * 添加请求订阅者
+     *
      * @param tag
      * @param disposable
      */
@@ -228,6 +237,7 @@ public class ViseHttp {
 
     /**
      * 清除对应Key的缓存
+     *
      * @param key
      */
     public static void removeCache(String key) {
@@ -236,6 +246,7 @@ public class ViseHttp {
 
     /**
      * 清楚所有缓存并关闭缓存
+     *
      * @return
      */
     public static Disposable clearCache() {

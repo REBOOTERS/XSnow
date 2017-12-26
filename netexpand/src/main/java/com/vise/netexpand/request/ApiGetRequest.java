@@ -17,7 +17,7 @@ import io.reactivex.observers.DisposableObserver;
  * @author: <a href="http://www.xiaoyaoyou1212.com">DAWI</a>
  * @date: 17/5/13 14:31.
  */
-public class ApiGetRequest extends ApiBaseRequest {
+public class ApiGetRequest extends ApiBaseRequest<ApiGetRequest> {
     public ApiGetRequest(String suffixUrl) {
         super(suffixUrl);
     }
@@ -40,7 +40,8 @@ public class ApiGetRequest extends ApiBaseRequest {
         }
         if (isLocalCache) {
             this.cacheExecute(getSubType(callback)).subscribe(disposableObserver);
+        } else {
+            this.execute(getType(callback)).subscribe(disposableObserver);
         }
-        this.execute(getType(callback)).subscribe(disposableObserver);
     }
 }
